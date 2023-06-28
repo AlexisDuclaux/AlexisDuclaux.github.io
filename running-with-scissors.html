@@ -91,7 +91,6 @@
             <div class="p-3"></div>
             <p><strong>Running With Scissors is a local multiplayer game for up to 4 players! (For the best experience, please use Xbox controllers)</strong></p>
             <p><strong>Your hair constantly grows.</strong></p>
-            <p><strong>Test</strong></p>
             <p><strong>Your objective is to run around with scissors trying to cut the hair of everyone else, all while avoiding the same fate.</strong></p>
             <p><strong>The closer you are to cutting someone’s hair at the root, the more lengths of hair you earn. The player with the most hair snipped when the timer runs out, wins!</strong></p>
           </div>
@@ -118,6 +117,27 @@
             <p>- Creation of the UI and the In-Game UI screen / Scripting + Unity</p>
           </div>
         </div>
+
+        <pre>
+          <code>
+            using System.Collections;
+            using System.Collections.Generic;
+            using UnityEngine;
+
+            public class CameraMove : MonoBehaviour
+            {
+              public float speed = 20;
+              private Vector2 motion;
+
+              void Update()
+              {
+                motion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                transform.Translate(motion*speed*Time.deltaTime);
+              }
+
+            }
+          </code>
+        </pre>
 
       </div>
     </div><!-- End Portfolio Details -->
