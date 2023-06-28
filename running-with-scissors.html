@@ -125,26 +125,28 @@
           </div>
         </div>
 
-        <pre>
-          <code>
-            using System.Collections;
-            using System.Collections.Generic;
-            using UnityEngine;
+        <div class="row">
+          <pre>
+            <code>
+              using System.Collections;
+              using System.Collections.Generic;
+              using UnityEngine;
 
-            public class CameraMove : MonoBehaviour
-            {
-              public float speed = 20;
-              private Vector2 motion;
-
-              void Update()
+              public class CameraMove : MonoBehaviour
               {
-                motion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-                transform.Translate(motion*speed*Time.deltaTime);
-              }
+                public float speed = 20;
+                private Vector2 motion;
 
-            }
-          </code>
-        </pre>
+                void Update()
+                {
+                  motion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                  transform.Translate(motion*speed*Time.deltaTime);
+                }
+
+              }
+            </code>
+          </pre>
+        </div>
 
       </div>
     </div><!-- End Portfolio Details -->
