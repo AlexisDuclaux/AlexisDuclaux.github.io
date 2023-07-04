@@ -56,7 +56,6 @@
               <li class="nav-item"><a class="nav-link" href="#Work">Skills</a></li>
               <li class="nav-item"><a class="nav-link" href="#Code">Code</a></li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
           </div>
         </nav>
       </div>
@@ -74,16 +73,20 @@
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item text-center active">
-                    <img height="450" src="assets/img/portfolio/details/running1.png" class="mx-auto d-block" alt="Responsive image">
+                    <img height="450" src="assets/img/portfolio/details/spacebodega1.png" class="mx-auto d-block" alt="Responsive image">
                   </div>
                   <div class="carousel-item text-center">
-                    <img height="450" src="assets/img/portfolio/details/running2.png" class="mx-auto d-block" alt="Responsive image">
+                    <img height="450" src="assets/img/portfolio/details/spacebodega2.png" class="mx-auto d-block" alt="Responsive image">
                   </div>
                   <div class="carousel-item text-center">
-                    <img height="450" src="assets/img/portfolio/details/running3.png" class="mx-auto d-block" alt="Responsive image">
+                    <img height="450" src="assets/img/portfolio/details/spacebodega3.png" class="mx-auto d-block" alt="Responsive image">
+                  </div>
+                  <div class="carousel-item text-center">
+                    <img height="450" src="assets/img/portfolio/details/spacebodega4.png" class="mx-auto d-block" alt="Responsive image">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -166,9 +169,9 @@
               <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="btn btn-outline-success buttonR active" id="v-pills-GameManager-tab" data-bs-toggle="pill" data-bs-target="#GameManager" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">GameManager.cs</button>
                 <div class="p-1"></div>
-                <button class="btn btn-outline-success buttonR" id="v-pills-TopDownController-tab" data-bs-toggle="pill" data-bs-target="#TopDownController" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">TopDownController.cs</button>
+                <button class="btn btn-outline-success buttonR" id="v-pills-TopDownController-tab" data-bs-toggle="pill" data-bs-target="#MoveShip" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">MoveSpaceship.cs</button>
                 <div class="p-1"></div>
-                <button class="btn btn-outline-success buttonR" id="v-pills-EndMenu-tab" data-bs-toggle="pill" data-bs-target="#EndMenu" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">EndMenu.cs</button>
+                <button class="btn btn-outline-success buttonR" id="v-pills-EndMenu-tab" data-bs-toggle="pill" data-bs-target="#Cypher" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Dialect.cs</button>
               </div>
             </div>
 
@@ -179,450 +182,561 @@
                     <code class="language-csharp">
 //Script used to manage the different states of the game
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public bool gamePaused = false;
+  public string[] Human_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string Human_font = "Human";
+  public string[] Alien_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string[] Alien_cypher = {"","","","","","","","","","","","","","","","","","","","","","","","","",""};
+  public string[] Runes_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string[] Runes_cypher = {"","","","","","","","","","","","","","","","","","","","","","","","","",""};
+  public string[] Elvish_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string[] Elvish_cypher = {"","","","","","","","","","","","","","","","","","","","","","","","","",""};
+  public string[] Mason_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string[] Mason_cypher = {"","","","","","","","","","","","","","","","","","","","","","","","","",""};
+  public string[] ASL_Alph = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+  public string[] ASL_cypher = {"","","","","","","","","","","","","","","","","","","","","","","","","",""};
 
-    [Header("Players")]
-    public List<GameObject> Players = new List<GameObject>();
-    public List<Color> AvailableColors = new List<Color>();
-    public List<Color> PlayerColors = new List<Color>();
-    public List<Material> AvailableMaterials = new List<Material>();
-    public List<Material> PlayerMaterials = new List<Material>();
-    public List<int> PlayerScores = new List<int>();
+  public string parseColor;
+  public string parseColorend;
 
-    [Header("Level Info")]
-    public int level = 0;
-    public List<float> Timers = new List<float>();
-    int timerSelect = 2;
-    public float choiceTimerLevel = 11.0f;
-    public float timerLevel = 11.0f; //3minutes
+  public GameObject JourmalUI;
+  public GameObject ExitUI;
+  public GameObject MainMenu;
+  public GameObject ContinueUI;
+  public GameObject AudioManager;
 
-    void Awake()
+  public GameObject Spaceship;
+  public GameObject TalkInterface;
+  public GameObject ItemShop;
+  public GameObject Failed;
+  public GameObject Success;
+  public GameObject Canvas;
+  GameObject SpaceshipCreate;
+  public GameObject[] Spawns;
+  public GameObject[] Custsomers;
+  public Transform Port;
+  public GameObject HowTo;
+  public GameObject Credits;
+
+  public bool isServing;
+  public int LastCustomer = 3;
+  public int LastToLast = 2;
+  int NewCust;
+
+  Coroutine co;
+
+  public string FirstObj;
+  public string SecondObj;
+  public string ThirdObj;
+  public int nbItem = 1;
+  public string NewText;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        choiceTimerLevel = Timers[timerSelect];
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
-
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
+      if (PlayerPrefs.HasKey("Alien_Alph0"))
+      {
+        ContinueUI.SetActive(true);
+      }
+      else
+      {
+        ContinueUI.SetActive(false);
+      }
     }
 
-    public void timerPlus()
-    {
-        if(timerSelect < Timers.Count -1)
-        {
-            timerSelect += 1;
-        }
-        else{
-            timerSelect = 0;
-        }
-
-        choiceTimerLevel = Timers[timerSelect];
-    }
-
-    public void timerLess()
-    {
-        if(timerSelect > 0)
-        {
-            timerSelect -= 1;
-        }
-        else{
-            timerSelect = Timers.Count -1;
-        }
-
-        choiceTimerLevel = Timers[timerSelect];
-    }
-
-    public void startLevel()
-    {
-        timerLevel = choiceTimerLevel;
-        for(int idx = 0; idx < Players.Count; idx++)
-        {
-            Players[idx].transform.parent = this.gameObject.transform;
-            Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
-        }
-        SceneManager.LoadScene("Map1", LoadSceneMode.Single);
-    }
-
-    void FixedUpdate()
-    {
-        if(level == 1)
-        {
-            if(!gamePaused){
-                timerLevel -= Time.deltaTime;
-                for(int idx = 0; idx < Players.Count; idx++)
-                {
-                    int feets = Players[idx].transform.GetChild(1).GetComponent<TopDownController>().TotalStrandCut;
-                    PlayerScores[idx] = feets;
-                }
-                if(timerLevel <= 0.0f)
-                {
-                    level = 2;
-                }
-            }
-        }
-    }
-}
-                        </code>
-                      </pre>
-                    </div>
-                  <div class="tab-pane fade" id="TopDownController" role="tabpanel" aria-labelledby="v-pills-TopDownController-tab" tabindex="2">
-                    <pre class="rounded bg-dark">
-                      <code class="language-csharp">
-//Character controller
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class TopDownController : MonoBehaviour
-{
-
-    [SerializeField] CharacterController controller;
-    [SerializeField] float Speed = 10.0f;
-    [SerializeField] float dashMultiplier = 2f;
-    [SerializeField] float dashMaxTimer = 3f;
-    [SerializeField] float cutCooldown = 1f;
-    [SerializeField] GameObject Model;
-    [SerializeField] Animator Anim;
-    [SerializeField] GetTargetHair targetedStrands;
-    [SerializeField] HairPhysics hairRoot;
-    [SerializeField] bool losePointsWhenCuttingOwnHair = true;
-    [SerializeField] public int TotalStrandCut = 0;
-    //public GameObject particlesContainer;
-    public GameObject floatingScore;
-    public Transform topHead;
-
-    Vector2 movementInput;
-    Vector2 lastMovementInput;
-    GameManager manager;
-    Color newColor;
-    Material newMat;
-
-
-    private bool canMove = true;
-    private float dashTimer = 0f;
-    private float cutTimer = 0f;
-    private SoundManager sm;
-    private GameObject mainCam;
-    private float prevSpeed;
-
-    void Awake()
-    {
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        manager.Players.Add(this.gameObject.transform.parent.gameObject);
-        GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
-        if(soundManagerObj != null)
-            sm = soundManagerObj.GetComponent<SoundManager>();
-        newColor = manager.AvailableColors[0];
-        newMat = manager.AvailableMaterials[0];
-        manager.AvailableColors.RemoveAt(0);
-        manager.AvailableMaterials.RemoveAt(0);
-        manager.PlayerColors.Add(newColor);
-        manager.PlayerMaterials.Add(newMat);
-        ChangeHairColor();
-    }
-
-    void Start(){
-        mainCam = GameObject.Find("CameraContainer");
-    }
-
-    void ChangeHairColor()
-    {
-        this.transform.parent.GetChild(0).GetChild(1).gameObject.GetComponent<LineRenderer>().material = newMat;
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        if(mainCam == null)
-            mainCam = GameObject.Find("CameraContainer");
 
-        if (manager.level == 1 && !manager.gamePaused)
-        {
-            if(canMove){
-                Vector3 horizontalVelocity = (Vector3.right * -movementInput.y + Vector3.forward * movementInput.x) * Speed;
-                controller.Move(horizontalVelocity * Time.deltaTime);
-                var rotation = Vector2.SignedAngle(new Vector2(1,0), new Vector2(movementInput.x,-movementInput.y));
+    }
 
-                if(movementInput != new Vector2(0,0))
-                {
-                    Anim.SetFloat("Blend", 1.0f);
-                    Model.transform.eulerAngles = new Vector3(0,rotation,0);
-                }
-                else
-                {
-                    Anim.SetFloat("Blend", 0.0f);
-                }
-                lastMovementInput = movementInput;
-            }else{
-                Vector3 horizontalVelocity = (Vector3.right * -lastMovementInput.y + Vector3.forward * lastMovementInput.x) * (Speed * dashMultiplier);
-                controller.Move(horizontalVelocity * Time.deltaTime);
-                dashTimer -= Time.deltaTime;
-                if(dashTimer <= 0){
-                    canMove = true;
-                }
+    public void Shuffle(string[] Alph) {
+      for (int i = 0; i < Alph.Length - 1; i++) {
+              int rnd = Random.Range(i, Alph.Length);
+              string tempGO = Alph[rnd];
+              Alph[rnd] = Alph[i];
+              Alph[i] = tempGO;
+      }
+    }
+
+    public void NewGame()
+    {
+      Shuffle(Alien_Alph);
+      Shuffle(Runes_Alph);
+      Shuffle(Elvish_Alph);
+      Shuffle(Mason_Alph);
+      Shuffle(ASL_Alph);
+      JourmalUI.SetActive(true);
+      ExitUI.SetActive(true);
+      MainMenu.SetActive(false);
+      co = StartCoroutine(SpawnCoroutine());
+      AudioManager.GetComponent<AudioManager>().InGame();
+    }
+
+    public void Continue()
+    {
+      JourmalUI.SetActive(true);
+      ExitUI.SetActive(true);
+      MainMenu.SetActive(false);
+      for (int i = 0; i < Alien_Alph.Length; i++){
+          Alien_Alph[i] = PlayerPrefs.GetString("Alien_Alph" + i.ToString());
+      }
+
+      for (int i = 0; i < Alien_cypher.Length; i++){
+          Alien_cypher[i] = PlayerPrefs.GetString("Alien_cypher" + i.ToString());
+      }
+
+      for (int i = 0; i < Runes_Alph.Length; i++){
+          Runes_Alph[i] = PlayerPrefs.GetString("Runes_Alph" + i.ToString());
+      }
+
+      for (int i = 0; i < Runes_cypher.Length; i++){
+          Runes_cypher[i] = PlayerPrefs.GetString("Runes_cypher" + i.ToString());
+      }
+
+      for (int i = 0; i < Elvish_Alph.Length; i++){
+          Elvish_Alph[i] = PlayerPrefs.GetString("Elvish_Alph" + i.ToString());
+      }
+
+      for (int i = 0; i < Elvish_cypher.Length; i++){
+          Elvish_cypher[i] = PlayerPrefs.GetString("Elvish_cypher" + i.ToString());
+      }
+
+      for (int i = 0; i < Mason_Alph.Length; i++){
+          Mason_Alph[i] = PlayerPrefs.GetString("Mason_Alph" + i.ToString());
+      }
+
+      for (int i = 0; i < Mason_cypher.Length; i++){
+          Mason_cypher[i] = PlayerPrefs.GetString("Mason_cypher" + i.ToString());
+      }
+
+      for (int i = 0; i < ASL_Alph.Length; i++){
+          ASL_Alph[i] = PlayerPrefs.GetString("ASL_Alph" + i.ToString());
+      }
+
+      for (int i = 0; i < ASL_cypher.Length; i++){
+          ASL_cypher[i] = PlayerPrefs.GetString("ASL_cypher" + i.ToString());
+      }
+
+      if (PlayerPrefs.GetInt("isServing") == 0)
+      {
+        isServing = false;
+        Timer();
+      }
+      else {
+        isServing = true;
+        Canvas.GetComponent<TalkScript>().AlienType = PlayerPrefs.GetInt("Alien_type");
+        Canvas.GetComponent<TalkScript>().Text = PlayerPrefs.GetString("Alien_text");
+        TalkInterface.SetActive(true);
+        ItemShop.SetActive(true);
+        Failed.SetActive(false);
+        Success.SetActive(false);
+        Canvas.GetComponent<TalkScript>().Refresh();
+        AudioManager.GetComponent<AudioManager>().InGame();
+      }
+    }
+
+    public void Timer()
+    {
+      co = StartCoroutine(SpawnCoroutine());
+    }
+
+
+    IEnumerator SpawnCoroutine()
+    {
+      float sec = Random.Range(0, 7);
+      yield return new WaitForSeconds(sec);
+      int rnd = Random.Range(0, Spawns.Length);
+      SpaceshipCreate = Instantiate(Spaceship, Spawns[rnd].transform.position, Quaternion.identity);
+    }
+
+    public void NewCustomer()
+    {
+      isServing = true;
+      NewCust = Random.Range(0, Custsomers.Length);
+
+      while((NewCust == LastCustomer) || (NewCust == LastToLast))
+      {
+            NewCust = Random.Range(0, Custsomers.Length);
+      }
+
+      int u = Custsomers[NewCust].GetComponent<Alien>().Type;
+      Canvas.GetComponent<TalkScript>().AlienType = u;
+      nbItem = Random.Range(1, 3);
+      LastToLast = LastCustomer;
+      LastCustomer = NewCust;
+
+      switch (nbItem)
+      {
+        case 1:
+            string[] strg = this.GetComponent<Strings>().OneObject;
+            string[] objs = this.GetComponent<Strings>().SellObjects;
+            string strObj = strg[Random.Range(0, strg.Length)];
+            FirstObj = objs[Random.Range(0, objs.Length)];
+            string[] Split = strObj.Split(char.Parse("$"));
+            NewText = Split[0] + parseColor + FirstObj + parseColorend + Split[1];
+            break;
+
+        case 2:
+            string[] strg2 = this.GetComponent<Strings>().TwoObject;
+            string[] objs2 = this.GetComponent<Strings>().SellObjects;
+            string strObj2 = strg2[Random.Range(0, strg2.Length)];
+            FirstObj = objs2[Random.Range(0, objs2.Length)];
+            SecondObj = objs2[Random.Range(0, objs2.Length)];
+            while (SecondObj == FirstObj)
+            {
+              SecondObj = objs2[Random.Range(0, objs2.Length)];
             }
-        }
-        if(cutTimer > 0){
-            cutTimer -= Time.deltaTime;
-        }
-    }
+            string[] Split2 = strObj2.Split(char.Parse("$"));
+            NewText = Split2[0] + parseColor + FirstObj + parseColorend + Split2[1] + parseColor + SecondObj + parseColorend + Split2[2] ;
+            break;
 
-    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
-
-    public void OnStartPressed(InputAction.CallbackContext ctx)
-    {
-        if (manager.level == 0 && manager.Players.Count >= 2)
-        {
-            GameObject.FindGameObjectWithTag("StartMenu").GetComponent<StartMenu>().Transition();
-        }else if(manager.level == 1){
-            if(!manager.gamePaused){
-                prevSpeed = Anim.speed;
-                Anim.speed = 0;
-                manager.gamePaused = true;
-                Time.timeScale = 0;
-            }else{
-                Anim.speed = prevSpeed;
-                manager.gamePaused = false;
-                Time.timeScale = 1;
+        case 3:
+            string[] strg3 = this.GetComponent<Strings>().ThreeObject;
+            string[] objs3 = this.GetComponent<Strings>().SellObjects;
+            string strObj3 = strg3[Random.Range(0, strg3.Length)];
+            FirstObj = objs3[Random.Range(0, objs3.Length)];
+            SecondObj = objs3[Random.Range(0, objs3.Length)];
+            while (SecondObj == FirstObj)
+            {
+              SecondObj = objs3[Random.Range(0, objs3.Length)];
             }
-        }
-    }
-
-    public void OnTimerPlusPressed(InputAction.CallbackContext ctx)
-    {
-        if (manager.level == 0 && ctx.started)
-        {
-            manager.timerPlus();
-        }
-    }
-
-    public void OnTimerLessPressed(InputAction.CallbackContext ctx)
-    {
-        if (manager.level == 0 && ctx.started)
-        {
-            manager.timerLess();
-        }
-    }
-
-    public void OnCutPressed(InputAction.CallbackContext ctx)
-    {
-        if (manager.level == 1 && !manager.gamePaused)
-        {
-            if(cutTimer <= 0){
-                if(lastMovementInput != new Vector2(0,0)){
-                    dashTimer = dashMaxTimer;
-                    if(sm != null)
-                        sm.PlayAudio("DashSFX");
-
-                    canMove = false;
-                }
-                var strands = targetedStrands.GetHairStrands();
-                int totalStrands = 0;
-                foreach(var strand in strands){
-                    if(strand != null){
-                        var checkStrand = strand.GetComponent<HairStrandInfo>();
-                        var root = checkStrand.GetHairRoot();
-                        int newStrand = 0;
-                        if(root != hairRoot){
-                            newStrand = root.CutFromStrand(strand);
-                        }
-                        totalStrands += newStrand;
-                    }
-                }
-                if(totalStrands > 0){
-                    if(sm != null)
-                        sm.PlayAudio("NormalCut");
-
-                    if(mainCam != null){
-                        mainCam.GetComponent<CameraShake>().ShakeCamera();
-                    }
-                    TotalStrandCut += totalStrands;
-                    if(floatingScore != null){
-                        var score = Instantiate(floatingScore);
-                        score.transform.SetParent(this.gameObject.transform.parent);
-                        score.gameObject.transform.position = topHead.position;
-                        score.GetComponent<FloatingScore>().SetInstance(totalStrands,newColor,topHead);
-                    }
-                }
-                cutTimer = cutCooldown;
+            ThirdObj = objs3[Random.Range(0, objs3.Length)];
+            while ((ThirdObj == FirstObj) || (ThirdObj == SecondObj))
+            {
+              ThirdObj = objs3[Random.Range(0, objs3.Length)];
             }
-        }
+            string[] Split3 = strObj3.Split(char.Parse("$"));
+            NewText = Split3[0] + parseColor + FirstObj + parseColorend + Split3[1] + parseColor + SecondObj + parseColorend + Split3[2] + parseColor + ThirdObj + parseColorend + Split3[3] ;
+            break;
+      }
+      Canvas.GetComponent<TalkScript>().Text = NewText;
+      Canvas.GetComponent<TalkScript>().SetAudio();
+      Custsomers[NewCust].GetComponent<Alien>().Refresh();
+      TalkInterface.SetActive(true);
+      ItemShop.SetActive(true);
+    }
+
+    public void Failedy()
+    {
+      ItemShop.SetActive(false);
+      Failed.SetActive(true);
+      Success.SetActive(false);
+      Canvas.GetComponent<TalkScript>().Failed();
+    }
+
+    public void Successy()
+    {
+      ItemShop.SetActive(false);
+      Failed.SetActive(false);
+      Success.SetActive(true);
+      Canvas.GetComponent<TalkScript>().Succeded();
+    }
+
+    public void Cancely()
+    {
+      isServing = false;
+      TalkInterface.SetActive(false);
+      ItemShop.SetActive(false);
+      Failed.SetActive(false);
+      Success.SetActive(false);
+      if (SpaceshipCreate != null)
+      {
+      SpaceshipCreate.GetComponent<MoveSpaceship>().Depart();
+      }
+      else{
+        SpaceshipCreate = Instantiate(Spaceship, Port.position, Quaternion.identity);
+        SpaceshipCreate.GetComponent<MoveSpaceship>().Depart();
+      }
+    }
+
+    public void Erase()
+    {
+      PlayerPrefs.DeleteAll();
+    }
+
+    public void ExitApp()
+    {
+      Application.Quit();
+    }
+
+    public void BackToMenu()
+    {
+      StopCoroutine(co);
+      for (int i = 0; i < Alien_Alph.Length; i++){
+          PlayerPrefs.SetString("Alien_Alph" + (i.ToString()), Alien_Alph[i]);
+      }
+
+      for (int i = 0; i < Alien_cypher.Length; i++){
+          PlayerPrefs.SetString("Alien_cypher" + i.ToString(), Alien_cypher[i]);
+      }
+
+      for (int i = 0; i < Runes_Alph.Length; i++){
+          PlayerPrefs.SetString("Runes_Alph" + i.ToString(), Runes_Alph[i]);
+      }
+
+      for (int i = 0; i < Runes_cypher.Length; i++){
+          PlayerPrefs.SetString("Alien_cypher" + i.ToString(), Runes_cypher[i]);
+      }
+
+      for (int i = 0; i < Elvish_Alph.Length; i++){
+          PlayerPrefs.SetString("Alien_Alph" + i.ToString(), Elvish_Alph[i]);
+      }
+
+      for (int i = 0; i < Elvish_cypher.Length; i++){
+          PlayerPrefs.SetString("Alien_cypher" + i.ToString(), Elvish_cypher[i]);
+      }
+
+      for (int i = 0; i < Mason_Alph.Length; i++){
+          PlayerPrefs.SetString("Mason_Alph" + i.ToString(), Mason_Alph[i]);
+      }
+
+      for (int i = 0; i < Mason_cypher.Length; i++){
+          PlayerPrefs.SetString("Alien_cypher" + i.ToString(), Mason_cypher[i]);
+      }
+
+      for (int i = 0; i < ASL_Alph.Length; i++){
+          PlayerPrefs.SetString("Alien_Alph" + i.ToString(), ASL_Alph[i]);
+      }
+
+      for (int i = 0; i < ASL_cypher.Length; i++){
+          PlayerPrefs.SetString("Alien_cypher" + i.ToString(), ASL_cypher[i]);
+      }
+
+      if (isServing){
+        PlayerPrefs.SetInt("isServing", 1);
+      }
+      else{
+        PlayerPrefs.SetInt("isServing", 0);
+      }
+
+      PlayerPrefs.SetInt("Alien_type", Canvas.GetComponent<TalkScript>().AlienType);
+      PlayerPrefs.SetString("Alien_text", Canvas.GetComponent<TalkScript>().Text);
+
+      if (SpaceshipCreate != null)
+      {
+        Destroy(SpaceshipCreate);
+      }
+      HowTo.SetActive(false);
+      Credits.SetActive(false);
+      TalkInterface.SetActive(false);
+      ItemShop.SetActive(false);
+      Failed.SetActive(false);
+      Success.SetActive(false);
+      JourmalUI.SetActive(false);
+      ExitUI.SetActive(false);
+      MainMenu.SetActive(true);
+      ContinueUI.SetActive(true);
+      AudioManager.GetComponent<AudioManager>().MainMenu();
+    }
+
+    public void CreditsUI(){
+      if (Credits.activeSelf == true)
+      {
+        HowTo.SetActive(false);
+        Credits.SetActive(false);
+      }
+      else{
+        HowTo.SetActive(false);
+        Credits.SetActive(true);
+      }
+    }
+
+    public void HowToUI(){
+      if (HowTo.activeSelf == true)
+      {
+        HowTo.SetActive(false);
+        Credits.SetActive(false);
+      }
+      else{
+        HowTo.SetActive(true);
+        Credits.SetActive(false);
+      }
     }
 }
                       </code>
                     </pre>
                   </div>
-                  <div class="tab-pane fade" id="EndMenu" role="tabpanel" aria-labelledby="v-pills-EndMenu-tab" tabindex="3">
+                  <div class="tab-pane fade" id="MoveShip" role="tabpanel" aria-labelledby="v-pills-EndMenu-tab" tabindex="3">
                     <pre class="rounded bg-dark">
                       <code class="language-csharp">
+//Script to spawn and manage when a new client is coming
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
+public class MoveSpaceship : MonoBehaviour
+{
+    public Transform MovePoint;
+    public GameObject[] spawns;
+    public float speed = 1.0f;
+    public bool stop = false;
+    public bool depart = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+      MovePoint = GameObject.Find("GameManager").GetComponent<GameManager>().Port;
+    }
+
+    void Update()
+    {
+      // Move our position a step closer to the target.
+      float step =  speed * Time.deltaTime; // calculate distance to move
+      transform.position = Vector3.MoveTowards(transform.position, MovePoint.position, step);
+      Vector3 relativePos = MovePoint.position - transform.position;
+
+      // the second argument, upwards, defaults to Vector3.up
+      Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+      transform.rotation = rotation;
+
+      // Check if the position of the cube and sphere are approximately equal.
+      if (Vector3.Distance(transform.position, MovePoint.position) < 0.001f)
+      {
+        if (!stop)
+        {
+          GameObject.Find("GameManager").GetComponent<GameManager>().NewCustomer();
+          stop = true;
+        }
+        else if (depart)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().Timer();
+            Destroy(this);
+        }
+      }
+    }
+
+    public void Depart()
+    {
+      spawns = GameObject.Find("GameManager").GetComponent<GameManager>().Spawns;
+      MovePoint = spawns[Random.Range(0, spawns.Length)].transform;
+      this.GetComponent<AudioSource>().Play(0);
+      depart = true;
+    }
+}
+                      </code>
+                    </pre>
+                  </div>
+                  <div class="tab-pane fade" id="Cypher" role="tabpanel" aria-labelledby="v-pills-EndMenu-tab" tabindex="2">
+                    <pre class="rounded bg-dark">
+                      <code class="language-csharp">
+//Script that serves as a cypher to decode each alien's dialect
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 
-public class EndMenu : MonoBehaviour
+public class Dialect : MonoBehaviour
 {
-    GameManager manager;
-    private SoundManager sm;
-    public List<float> PlayerScores = new List<float>();
-    public List<Color> AvailableColors = new List<Color>();
-    public List<Material> AvailableMaterials = new List<Material>();
-    public int biggestScore;
-    public int strongestPlayer;
-    public float fillSpeed = 10.0f;
+    public GameObject[] Language;
+    public int Type;
+    public int MaxTypes;
 
-    int state = -1;
+    Transform LangText;
+    GameObject Answer;
 
-    void Start(){
-        GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
-        if(soundManagerObj != null)
-            sm = soundManagerObj.GetComponent<SoundManager>();
+    Alien Al;
+    GameManager Manager;
 
-        if(sm != null)
-            sm.PlayAudio("MainMenuMusic");
-
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        for(int idx = 0; idx < manager.Players.Count; idx++)
+    // Start is called before the first frame update
+    public void Refresh()
+    {
+      switch (Type)
         {
-            manager.Players[idx].gameObject.SetActive(false);
-            this.transform.GetChild(3).GetChild(idx).gameObject.SetActive(true);
-            this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
-            var scoreInt = (int)PlayerScores[idx];
-            this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
-        }
+          case 1:
+              Al = GameObject.Find("Imug").GetComponent<Alien>();
+              break;
 
-        List<int> ScoresAmount = new List<int>();
-        for(int u = 0; u < manager.PlayerScores.Count; u++)
-        {
-            ScoresAmount.Add(manager.PlayerScores[u]);
+          case 2:
+              Al = GameObject.Find("Xsiale").GetComponent<Alien>();
+              break;
+
+          case 3:
+              Al = GameObject.Find("Tirbint").GetComponent<Alien>();
+              break;
+
+          case 4:
+              Al = GameObject.Find("Imek").GetComponent<Alien>();
+              break;
+
+          case 5:
+              Al = GameObject.Find("Z-XWY").GetComponent<Alien>();
+              break;
         }
-        ScoresAmount.Sort();
-        biggestScore = ScoresAmount[ScoresAmount.Count-1];
+      Al.Refresh();
+      Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+      for(int i = 0; i < Language.Length; i++)
+      {
+        LangText = Language[i].transform.Find("Name");
+        Answer = Language[i];
+        LangText.GetComponent<TMP_Text>().text = Al.Language + Al.Alph[i];
+        Answer.GetComponent<TMP_InputField>().text = Al.Cypher[i];
+      }
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    public void Change()
     {
-        if (state == 0)
-        {
-            for(int idx = 0; idx < manager.Players.Count; idx++)
-            {
-                this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
-                if(PlayerScores[idx] < manager.PlayerScores[idx])
-                {
-                    if (PlayerScores[idx] + Time.deltaTime * fillSpeed <= manager.PlayerScores[idx])
-                    {
-                        PlayerScores[idx] += Time.deltaTime * fillSpeed;
-                    }
-                    else
-                    {
-                        PlayerScores[idx] = manager.PlayerScores[idx];
-                    }
+      Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+      for(int i = 0; i < Language.Length; i++)
+      {
+        Answer = Language[i];
+        switch (Type)
+          {
+          case 1:
+              Manager.Alien_cypher[i] = Answer.GetComponent<TMP_InputField>().text.ToUpper();
+              GameObject.Find("Imug").GetComponent<Alien>().Refresh();
+              break;
 
-                }
-                var scoreInt = (int)PlayerScores[idx];
-                this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
-                var fillAmounts = scoreInt/1000.0f;
-                this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().fillAmount = fillAmounts;
-                if(scoreInt >= biggestScore)
-                {
-                    strongestPlayer = idx;
-                    state = 1;
-                }
-            }
-        }
-        else if (state == 1)
-        {
-            this.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-            int winner = strongestPlayer + 1;
-            this.transform.GetChild(3).GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = winner.ToString();
-            this.transform.GetChild(0).gameObject.SetActive(true);
-            this.transform.GetChild(1).gameObject.SetActive(true);
-        }
+          case 2:
+              Manager.Runes_cypher[i] = Answer.GetComponent<TMP_InputField>().text.ToUpper();
+              GameObject.Find("Xsiale").GetComponent<Alien>().Refresh();
+              break;
+
+          case 3:
+              Manager.Elvish_cypher[i] = Answer.GetComponent<TMP_InputField>().text.ToUpper();
+              GameObject.Find("Tirbint").GetComponent<Alien>().Refresh();
+              break;
+
+          case 4:
+              Manager.Mason_cypher[i] = Answer.GetComponent<TMP_InputField>().text.ToUpper();
+              GameObject.Find("Imek").GetComponent<Alien>().Refresh();
+              break;
+
+          case 5:
+              Manager.ASL_cypher[i] = Answer.GetComponent<TMP_InputField>().text.ToUpper();
+              GameObject.Find("Z-XWY").GetComponent<Alien>().Refresh();
+              break;
+          }
+          //GameObject.Find("Canvas").GetComponent<TalkScript>().Refresh();
+      }
     }
 
-    public void onMenuLoaded()
-    {
-        state = 0;
+    public void Up(){
+      if(Type < MaxTypes){
+        Type ++;
+      }
+      else{
+        Type = 1;
+      }
+      Refresh();
     }
 
-    public void OnMainMenu()
-    {
-        GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        for(int idx = 0; idx < manager.Players.Count; idx++)
-        {
-            Destroy(manager.Players[idx].gameObject);
-        }
-
-        int numPlayers = manager.Players.Count;
-
-        for(int idx = 0; idx < numPlayers; idx++)
-        {
-            manager.Players.RemoveAt(0);
-        }
-
-        manager.AvailableColors = new List<Color>();
-        manager.PlayerColors = new List<Color>();
-        manager.AvailableMaterials = new List<Material>();
-        manager.PlayerMaterials = new List<Material>();
-
-        for(int idx = 0; idx < AvailableColors.Count; idx++)
-        {
-            manager.AvailableColors.Add(AvailableColors[idx]);
-        }
-
-        for(int idx = 0; idx < AvailableMaterials.Count; idx++)
-        {
-            manager.AvailableMaterials.Add(AvailableMaterials[idx]);
-        }
-
-        for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
-        {
-            manager.PlayerScores[idx] = 0;
-        }
-
-        manager.level = 0;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-    }
-
-    public void OnPushedRestart()
-    {
-        GetComponent<Animation>().Play("EndMenuRestart");
-    }
-
-    public void OnRestart()
-    {
-        GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
-        for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
-        {
-            manager.PlayerScores[idx] = 0;
-        }
-
-        for(int idx = 0; idx < manager.Players.Count; idx++)
-        {
-            manager.Players[idx].GetComponentInChildren<HairPhysics>().enableHairGrowth = false;
-            manager.Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
-            manager.Players[idx].GetComponentInChildren<TopDownController>().TotalStrandCut = 0;
-        }
-
-        manager.timerLevel = manager.choiceTimerLevel;
-        manager.level = 0;
-        SceneManager.LoadScene("Map1", LoadSceneMode.Single);
+    public void Down(){
+      if(Type > 1){
+        Type --;
+      }
+      else{
+        Type = MaxTypes;
+      }
+      Refresh();
     }
 }
                       </code>
