@@ -23,6 +23,9 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Highlight -->
+  <link rel="stylesheet" href="assets/highlight/styles/obsidian.min.css">
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -39,38 +42,32 @@
 
   <main id="main">
 
-  <!-- ======= Portfolio Details ======= -->
-  <div id="Project" class="portfolio-details">
-    <div class="container">
-      <p class="text-uppercase display-5 text-success"><strong>Space Bodega</strong></p>
-      <div class="p-1"></div>
+    <div id="Project" class="portfolio-details fixed-top">
+      <div class="container"> <!-- Navbar -->
+        <nav id="navbar-example2" class="navbar bg-black fixed-top d-flex justify-content-center">
+          <div class="col-lg-4 d-flex justify-content-start">
+            <h1><strong>Space Bodega</strong></h1>
+          </div>
 
-      <div id="Heading" class="row">
-        <!-- Navigation on the side -->
-        <div id="Navigation" class="col-lg-1">
-          <ul class="nav flex-column sticky-top">
-            <li class="nav-item">
-              <a class="nav-link text-success" aria-current="page" href="#Info">Project</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-success" href="#Game">Game</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-success" href="#Work">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-success" href="#Code">Code</a>
-            </li>
-          </ul>
-        </div>
+          <div class="col-lg-3 d-flex justify-content-end">
+            <ul class="nav nav-pills">
+              <li class="nav-item active"><a class="nav-link" href="#Info">Project</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Game">Description</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Work">Skills</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Code">Code</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </div>
+        </nav>
+      </div>
 
-        <!-- Body of the project -->
-        <div id="Body" class="col-lg-11">
+      <div class="container"> <!-- Body -->
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
 
-          <div class="p-1"></div>
+          <div class="p-2"></div>
 
           <!-- Info -->
-          <div id="Info" class="row">
+          <div id="Info" class="row d-flex justify-content-center">
             <div id="ProjectPictures" class="col-lg-7">
               <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -100,8 +97,8 @@
               </div>
             </div>
 
-            <div class="col-lg-5 portfolio-info bg-success bg-dark text-white">
-              <h3>Project information</h3>
+            <div class="col-lg-4 portfolio-info bg-dark text-white">
+              <h3><strong>Project information</strong></h3>
               <ul>
                 <li><strong>Category</strong>: Technical Game Design/Programming</li>
                 <li><strong>Plateform</strong>: PC</li>
@@ -116,519 +113,529 @@
           </div> <!-- End of the Info row -->
 
           <div class="p-4"></div>
+          <div class="p-4"></div>
 
           <!-- Game -->
-          <div id="Game" class="row">
-            <div id="scrollspyHeading2" class="row">
+          <div id="Game" class="row d-flex justify-content-center">
+            <div id="GameColumn" class="col-lg-11">
               <div class="col-lg">
-                <div class="p-3"></div>
-                <p><a href="#" onClick="window.open('https://existentialtea.itch.io/space-bodega', '_blank')"><strong>Play right in your web browser.</strong></a></p>
-                <div class="p-1"></div>
                 <p><strong>You just started a new job at a bodega in outer space! All your customers are different, and they all speak different languages. Learn to communicate with them to complete their orders by typing the letters you think each symbol corresponds to.</strong></p>
+                <div class="p-1"></div>
                 <div class="p-1"></div>
                 <p><strong>All you need is a mouse and keyboard!</strong></p>
                 <div class="p-1"></div>
-                <p><strong>The coloured text represents what the customer wants from the store.</strong></p>
-                <p><strong>&emsp;- Click the items to add them to their cart, and then checkout to complete the transaction. Watch for their reaction to see if you got it right!</strong></p>
-                <p><strong>&emsp;- Click the book icon to access your language handbook and click the arrows to find the right language.</strong></p>
-                <p><strong>&emsp;- Using the customer’s reaction, figure out what they were asking for in order to learn your first batch of letters!</strong></p>
-                <p><strong>&emsp;- Type in letters for each symbol and watch as the dialogue boxes convert to English!</strong></p>
+                <div class="p-1"></div>
+                <p><strong>The coloured text represents what the customer wants from the store.<br>
+                &emsp;- Click the items to add them to their cart, and then checkout to complete the transaction. Watch for their reaction to see if you got it right!<br>
+                &emsp;- Click the book icon to access your language handbook and click the arrows to find the right language.<br>
+                &emsp;- Using the customer’s reaction, figure out what they were asking for in order to learn your first batch of letters!<br>
+                &emsp;- Type in letters for each symbol and watch as the dialogue boxes convert to English!</strong></p>
+                <div class="p-3"></div>
+                <p><a class="d-flex justify-content-center" href="#" onClick="window.open('https://existentialtea.itch.io/space-bodega', '_blank')"><strong>Play right in your web browser.</strong></a></p>
               </div>
             </div>
           </div> <!-- End of the Game row -->
 
           <div class="p-4"></div>
+          <div class="p-4"></div>
 
           <!-- Work -->
-          <div id="Work" class="row">
-            <div id="scrollspyHeading3" class="row">
-              <div class="col-lg-12 portfolio-info rounded bg-success bg-dark text-white">
+          <div id="Work" class="row d-flex justify-content-center">
+            <div id="WorkColumn" class="col-lg-11">
+              <div class="rounded bg-success text-white">
                 <ul>
-                  <li>As the sole programmer of SPACE BODEGA, I had to ensure the workload would be manageable and feasible in 2 days.  To do that, working as a co-designer with our producer Brittni Martin was essential.</li>
-                  <li><strong>Work / Skills used:</strong></li>
-                  <li>&emsp;- Participation in meetings and decision-making about the Game Design | <strong>Teamwork and Game Design</strong></li>
-                  <li>&emsp;- Programming (C #) | <strong>Programing and time management</strong></li>
-                  <li>&emsp;- Implementation of all assets | <strong>Unity</strong></li>
-                  <li>&emsp;- Creation of the UI and the In-Game UI screen | <strong>Scripting + Unity</strong></li>
+                  <div class="p-3"></div>
+                  <p>As the sole programmer of SPACE BODEGA, I had to ensure the workload would be manageable and feasible in 2 days.  To do that, working as a co-designer with our producer Brittni Martin was essential.</p>
+                  <p><strong>Work / Skills used:</strong></p>
+                  <p>&emsp;- Participation in meetings and decision-making about the Game Design | <strong>Teamwork and Game Design</strong><br>
+                  &emsp;- Programming (C #) | <strong>Programing and time management</strong><br>
+                  &emsp;- Implementation of all assets | <strong>Unity</strong><br>
+                  &emsp;- Design and Creation of the UI/UX and all the menus | <strong>Scripting + Unity</strong><br>
+                  <div class="p-3"></div>
                 </ul>
               </div>
             </div>
           </div> <!-- End of the Work row -->
 
           <div class="p-4"></div>
+          <div class="p-4"></div>
 
           <!-- Row for project Code snippets -->
-          <div id="Code" class="row">
-            <h2>Code Snippets</h2>
+          <div id="Code" class="row d-flex justify-content-center">
+            <div class="col-2">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="btn btn-outline-success buttonR active" id="v-pills-GameManager-tab" data-bs-toggle="pill" data-bs-target="#GameManager" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">GameManager.cs</button>
+                <div class="p-1"></div>
+                <button class="btn btn-outline-success buttonR" id="v-pills-TopDownController-tab" data-bs-toggle="pill" data-bs-target="#TopDownController" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">TopDownController.cs</button>
+                <div class="p-1"></div>
+                <button class="btn btn-outline-success buttonR" id="v-pills-EndMenu-tab" data-bs-toggle="pill" data-bs-target="#EndMenu" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">EndMenu.cs</button>
+              </div>
+            </div>
 
-            <div class="container">
-              <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3 sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                  <button class="btn btn-outline-success active" id="v-pills-GameManager-tab" data-bs-toggle="pill" data-bs-target="#GameManager" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">GameManager.cs</button>
-                  <button class="btn btn-outline-success" id="v-pills-TopDownController-tab" data-bs-toggle="pill" data-bs-target="#TopDownController" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">TopDownController.cs</button>
-                  <button class="btn btn-outline-success" id="v-pills-EndMenu-tab" data-bs-toggle="pill" data-bs-target="#EndMenu" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">EndMenu.cs</button>
-                </div>
+            <div id="CodeBody" class="col-9 codemake">
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="GameManager" role="tabpanel" aria-labelledby="v-pills-GameManager-tab" tabindex="0">
+                  <pre class="rounded bg-dark">
+                    <code class="language-csharp">
+//Script used to manage the different states of the game
 
-                <div class="col-10">
-                  <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="GameManager" role="tabpanel" aria-labelledby="v-pills-GameManager-tab" tabindex="0">
-                      <pre class="rounded bg-success bg-dark text-white">
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-      //Script used to manage the different states of the game
+public class GameManager : MonoBehaviour
+{
+    public bool gamePaused = false;
 
-      using System;
-      using System.Collections;
-      using System.Collections.Generic;
-      using UnityEngine;
-      using UnityEngine.SceneManagement;
-      using UnityEngine.UI;
+    [Header("Players")]
+    public List<GameObject> Players = new List<GameObject>();
+    public List<Color> AvailableColors = new List<Color>();
+    public List<Color> PlayerColors = new List<Color>();
+    public List<Material> AvailableMaterials = new List<Material>();
+    public List<Material> PlayerMaterials = new List<Material>();
+    public List<int> PlayerScores = new List<int>();
 
-      public class GameManager : MonoBehaviour{
-          public bool gamePaused = false;
+    [Header("Level Info")]
+    public int level = 0;
+    public List<float> Timers = new List<float>();
+    int timerSelect = 2;
+    public float choiceTimerLevel = 11.0f;
+    public float timerLevel = 11.0f; //3minutes
 
-          [Header("Players")]
-          public List<GameObject> Players = new List<GameObject>();
-          public List<Color> AvailableColors = new List<Color>();
-          public List<Color> PlayerColors = new List<Color>();
-          public List<Material> AvailableMaterials = new List<Material>();
-          public List<Material> PlayerMaterials = new List<Material>();
-          public List<int> PlayerScores = new List<int>();
+    void Awake()
+    {
+        choiceTimerLevel = Timers[timerSelect];
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
 
-          [Header("Level Info")]
-          public int level = 0;
-          public List<float> Timers = new List<float>();
-          int timerSelect = 2;
-          public float choiceTimerLevel = 11.0f;
-          public float timerLevel = 11.0f; //3minutes
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
 
-          void Awake()
-          {
-              choiceTimerLevel = Timers[timerSelect];
-              GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+        DontDestroyOnLoad(this.gameObject);
+    }
 
-              if (objs.Length > 1)
-              {
-                  Destroy(this.gameObject);
-              }
+    public void timerPlus()
+    {
+        if(timerSelect < Timers.Count -1)
+        {
+            timerSelect += 1;
+        }
+        else{
+            timerSelect = 0;
+        }
 
-              DontDestroyOnLoad(this.gameObject);
-          }
+        choiceTimerLevel = Timers[timerSelect];
+    }
 
-          public void timerPlus()
-          {
-              if(timerSelect < Timers.Count -1)
-              {
-                  timerSelect += 1;
-              }
-              else{
-                  timerSelect = 0;
-              }
+    public void timerLess()
+    {
+        if(timerSelect > 0)
+        {
+            timerSelect -= 1;
+        }
+        else{
+            timerSelect = Timers.Count -1;
+        }
 
-              choiceTimerLevel = Timers[timerSelect];
-          }
+        choiceTimerLevel = Timers[timerSelect];
+    }
 
-          public void timerLess()
-          {
-              if(timerSelect > 0)
-              {
-                  timerSelect -= 1;
-              }
-              else{
-                  timerSelect = Timers.Count -1;
-              }
+    public void startLevel()
+    {
+        timerLevel = choiceTimerLevel;
+        for(int idx = 0; idx < Players.Count; idx++)
+        {
+            Players[idx].transform.parent = this.gameObject.transform;
+            Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
+        }
+        SceneManager.LoadScene("Map1", LoadSceneMode.Single);
+    }
 
-              choiceTimerLevel = Timers[timerSelect];
-          }
-
-          public void startLevel()
-          {
-              timerLevel = choiceTimerLevel;
-              for(int idx = 0; idx < Players.Count; idx++)
-              {
-                  Players[idx].transform.parent = this.gameObject.transform;
-                  Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
-              }
-              SceneManager.LoadScene("Map1", LoadSceneMode.Single);
-          }
-
-          void FixedUpdate()
-          {
-              if(level == 1)
-              {
-                  if(!gamePaused){
-                      timerLevel -= Time.deltaTime;
-                      for(int idx = 0; idx < Players.Count; idx++)
-                      {
-                          int feets = Players[idx].transform.GetChild(1).GetComponent<TopDownController>().TotalStrandCut;
-                          PlayerScores[idx] = feets;
-                      }
-                      if(timerLevel <= 0.0f)
-                      {
-                          level = 2;
-                      }
-                  }
-              }
-          }
-      }
+    void FixedUpdate()
+    {
+        if(level == 1)
+        {
+            if(!gamePaused){
+                timerLevel -= Time.deltaTime;
+                for(int idx = 0; idx < Players.Count; idx++)
+                {
+                    int feets = Players[idx].transform.GetChild(1).GetComponent<TopDownController>().TotalStrandCut;
+                    PlayerScores[idx] = feets;
+                }
+                if(timerLevel <= 0.0f)
+                {
+                    level = 2;
+                }
+            }
+        }
+    }
+}
+                        </code>
                       </pre>
                     </div>
                   <div class="tab-pane fade" id="TopDownController" role="tabpanel" aria-labelledby="v-pills-TopDownController-tab" tabindex="2">
-                    <pre class="rounded bg-success bg-dark text-white">
+                    <pre class="rounded bg-dark">
+                      <code class="language-csharp">
+//Character controller
 
-      //Character controller
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-      using System.Collections;
-      using System.Collections.Generic;
-      using UnityEngine;
-      using UnityEngine.InputSystem;
+public class TopDownController : MonoBehaviour
+{
 
-      public class TopDownController : MonoBehaviour
-      {
+    [SerializeField] CharacterController controller;
+    [SerializeField] float Speed = 10.0f;
+    [SerializeField] float dashMultiplier = 2f;
+    [SerializeField] float dashMaxTimer = 3f;
+    [SerializeField] float cutCooldown = 1f;
+    [SerializeField] GameObject Model;
+    [SerializeField] Animator Anim;
+    [SerializeField] GetTargetHair targetedStrands;
+    [SerializeField] HairPhysics hairRoot;
+    [SerializeField] bool losePointsWhenCuttingOwnHair = true;
+    [SerializeField] public int TotalStrandCut = 0;
+    //public GameObject particlesContainer;
+    public GameObject floatingScore;
+    public Transform topHead;
 
-          [SerializeField] CharacterController controller;
-          [SerializeField] float Speed = 10.0f;
-          [SerializeField] float dashMultiplier = 2f;
-          [SerializeField] float dashMaxTimer = 3f;
-          [SerializeField] float cutCooldown = 1f;
-          [SerializeField] GameObject Model;
-          [SerializeField] Animator Anim;
-          [SerializeField] GetTargetHair targetedStrands;
-          [SerializeField] HairPhysics hairRoot;
-          [SerializeField] bool losePointsWhenCuttingOwnHair = true;
-          [SerializeField] public int TotalStrandCut = 0;
-          //public GameObject particlesContainer;
-          public GameObject floatingScore;
-          public Transform topHead;
-
-          Vector2 movementInput;
-          Vector2 lastMovementInput;
-          GameManager manager;
-          Color newColor;
-          Material newMat;
+    Vector2 movementInput;
+    Vector2 lastMovementInput;
+    GameManager manager;
+    Color newColor;
+    Material newMat;
 
 
-          private bool canMove = true;
-          private float dashTimer = 0f;
-          private float cutTimer = 0f;
-          private SoundManager sm;
-          private GameObject mainCam;
-          private float prevSpeed;
+    private bool canMove = true;
+    private float dashTimer = 0f;
+    private float cutTimer = 0f;
+    private SoundManager sm;
+    private GameObject mainCam;
+    private float prevSpeed;
 
-          void Awake()
-          {
-              manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-              manager.Players.Add(this.gameObject.transform.parent.gameObject);
-              GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
-              if(soundManagerObj != null)
-                  sm = soundManagerObj.GetComponent<SoundManager>();
-              newColor = manager.AvailableColors[0];
-              newMat = manager.AvailableMaterials[0];
-              manager.AvailableColors.RemoveAt(0);
-              manager.AvailableMaterials.RemoveAt(0);
-              manager.PlayerColors.Add(newColor);
-              manager.PlayerMaterials.Add(newMat);
-              ChangeHairColor();
-          }
+    void Awake()
+    {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        manager.Players.Add(this.gameObject.transform.parent.gameObject);
+        GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
+        if(soundManagerObj != null)
+            sm = soundManagerObj.GetComponent<SoundManager>();
+        newColor = manager.AvailableColors[0];
+        newMat = manager.AvailableMaterials[0];
+        manager.AvailableColors.RemoveAt(0);
+        manager.AvailableMaterials.RemoveAt(0);
+        manager.PlayerColors.Add(newColor);
+        manager.PlayerMaterials.Add(newMat);
+        ChangeHairColor();
+    }
 
-          void Start(){
-              mainCam = GameObject.Find("CameraContainer");
-          }
+    void Start(){
+        mainCam = GameObject.Find("CameraContainer");
+    }
 
-          void ChangeHairColor()
-          {
-              this.transform.parent.GetChild(0).GetChild(1).gameObject.GetComponent<LineRenderer>().material = newMat;
-          }
+    void ChangeHairColor()
+    {
+        this.transform.parent.GetChild(0).GetChild(1).gameObject.GetComponent<LineRenderer>().material = newMat;
+    }
 
-          void Update()
-          {
-              if(mainCam == null)
-                  mainCam = GameObject.Find("CameraContainer");
+    void Update()
+    {
+        if(mainCam == null)
+            mainCam = GameObject.Find("CameraContainer");
 
-              if (manager.level == 1 && !manager.gamePaused)
-              {
-                  if(canMove){
-                      Vector3 horizontalVelocity = (Vector3.right * -movementInput.y + Vector3.forward * movementInput.x) * Speed;
-                      controller.Move(horizontalVelocity * Time.deltaTime);
-                      var rotation = Vector2.SignedAngle(new Vector2(1,0), new Vector2(movementInput.x,-movementInput.y));
+        if (manager.level == 1 && !manager.gamePaused)
+        {
+            if(canMove){
+                Vector3 horizontalVelocity = (Vector3.right * -movementInput.y + Vector3.forward * movementInput.x) * Speed;
+                controller.Move(horizontalVelocity * Time.deltaTime);
+                var rotation = Vector2.SignedAngle(new Vector2(1,0), new Vector2(movementInput.x,-movementInput.y));
 
-                      if(movementInput != new Vector2(0,0))
-                      {
-                          Anim.SetFloat("Blend", 1.0f);
-                          Model.transform.eulerAngles = new Vector3(0,rotation,0);
-                      }
-                      else
-                      {
-                          Anim.SetFloat("Blend", 0.0f);
-                      }
-                      lastMovementInput = movementInput;
-                  }else{
-                      Vector3 horizontalVelocity = (Vector3.right * -lastMovementInput.y + Vector3.forward * lastMovementInput.x) * (Speed * dashMultiplier);
-                      controller.Move(horizontalVelocity * Time.deltaTime);
-                      dashTimer -= Time.deltaTime;
-                      if(dashTimer <= 0){
-                          canMove = true;
-                      }
-                  }
-              }
-              if(cutTimer > 0){
-                  cutTimer -= Time.deltaTime;
-              }
-          }
+                if(movementInput != new Vector2(0,0))
+                {
+                    Anim.SetFloat("Blend", 1.0f);
+                    Model.transform.eulerAngles = new Vector3(0,rotation,0);
+                }
+                else
+                {
+                    Anim.SetFloat("Blend", 0.0f);
+                }
+                lastMovementInput = movementInput;
+            }else{
+                Vector3 horizontalVelocity = (Vector3.right * -lastMovementInput.y + Vector3.forward * lastMovementInput.x) * (Speed * dashMultiplier);
+                controller.Move(horizontalVelocity * Time.deltaTime);
+                dashTimer -= Time.deltaTime;
+                if(dashTimer <= 0){
+                    canMove = true;
+                }
+            }
+        }
+        if(cutTimer > 0){
+            cutTimer -= Time.deltaTime;
+        }
+    }
 
-          public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
-          public void OnStartPressed(InputAction.CallbackContext ctx)
-          {
-              if (manager.level == 0 && manager.Players.Count >= 2)
-              {
-                  GameObject.FindGameObjectWithTag("StartMenu").GetComponent<StartMenu>().Transition();
-              }else if(manager.level == 1){
-                  if(!manager.gamePaused){
-                      prevSpeed = Anim.speed;
-                      Anim.speed = 0;
-                      manager.gamePaused = true;
-                      Time.timeScale = 0;
-                  }else{
-                      Anim.speed = prevSpeed;
-                      manager.gamePaused = false;
-                      Time.timeScale = 1;
-                  }
-              }
-          }
+    public void OnStartPressed(InputAction.CallbackContext ctx)
+    {
+        if (manager.level == 0 && manager.Players.Count >= 2)
+        {
+            GameObject.FindGameObjectWithTag("StartMenu").GetComponent<StartMenu>().Transition();
+        }else if(manager.level == 1){
+            if(!manager.gamePaused){
+                prevSpeed = Anim.speed;
+                Anim.speed = 0;
+                manager.gamePaused = true;
+                Time.timeScale = 0;
+            }else{
+                Anim.speed = prevSpeed;
+                manager.gamePaused = false;
+                Time.timeScale = 1;
+            }
+        }
+    }
 
-          public void OnTimerPlusPressed(InputAction.CallbackContext ctx)
-          {
-              if (manager.level == 0 && ctx.started)
-              {
-                  manager.timerPlus();
-              }
-          }
+    public void OnTimerPlusPressed(InputAction.CallbackContext ctx)
+    {
+        if (manager.level == 0 && ctx.started)
+        {
+            manager.timerPlus();
+        }
+    }
 
-          public void OnTimerLessPressed(InputAction.CallbackContext ctx)
-          {
-              if (manager.level == 0 && ctx.started)
-              {
-                  manager.timerLess();
-              }
-          }
+    public void OnTimerLessPressed(InputAction.CallbackContext ctx)
+    {
+        if (manager.level == 0 && ctx.started)
+        {
+            manager.timerLess();
+        }
+    }
 
-          public void OnCutPressed(InputAction.CallbackContext ctx)
-          {
-              if (manager.level == 1 && !manager.gamePaused)
-              {
-                  if(cutTimer <= 0){
-                      if(lastMovementInput != new Vector2(0,0)){
-                          dashTimer = dashMaxTimer;
-                          if(sm != null)
-                              sm.PlayAudio("DashSFX");
+    public void OnCutPressed(InputAction.CallbackContext ctx)
+    {
+        if (manager.level == 1 && !manager.gamePaused)
+        {
+            if(cutTimer <= 0){
+                if(lastMovementInput != new Vector2(0,0)){
+                    dashTimer = dashMaxTimer;
+                    if(sm != null)
+                        sm.PlayAudio("DashSFX");
 
-                          canMove = false;
-                      }
-                      var strands = targetedStrands.GetHairStrands();
-                      int totalStrands = 0;
-                      foreach(var strand in strands){
-                          if(strand != null){
-                              var checkStrand = strand.GetComponent<HairStrandInfo>();
-                              var root = checkStrand.GetHairRoot();
-                              int newStrand = 0;
-                              if(root != hairRoot){
-                                  newStrand = root.CutFromStrand(strand);
-                              }
-                              totalStrands += newStrand;
-                          }
-                      }
-                      if(totalStrands > 0){
-                          if(sm != null)
-                              sm.PlayAudio("NormalCut");
+                    canMove = false;
+                }
+                var strands = targetedStrands.GetHairStrands();
+                int totalStrands = 0;
+                foreach(var strand in strands){
+                    if(strand != null){
+                        var checkStrand = strand.GetComponent<HairStrandInfo>();
+                        var root = checkStrand.GetHairRoot();
+                        int newStrand = 0;
+                        if(root != hairRoot){
+                            newStrand = root.CutFromStrand(strand);
+                        }
+                        totalStrands += newStrand;
+                    }
+                }
+                if(totalStrands > 0){
+                    if(sm != null)
+                        sm.PlayAudio("NormalCut");
 
-                          if(mainCam != null){
-                              mainCam.GetComponent<CameraShake>().ShakeCamera();
-                          }
-                          TotalStrandCut += totalStrands;
-                          if(floatingScore != null){
-                              var score = Instantiate(floatingScore);
-                              score.transform.SetParent(this.gameObject.transform.parent);
-                              score.gameObject.transform.position = topHead.position;
-                              score.GetComponent<FloatingScore>().SetInstance(totalStrands,newColor,topHead);
-                          }
-                      }
-                      cutTimer = cutCooldown;
-                  }
-              }
-          }
-
-      }
-                      </pre>
+                    if(mainCam != null){
+                        mainCam.GetComponent<CameraShake>().ShakeCamera();
+                    }
+                    TotalStrandCut += totalStrands;
+                    if(floatingScore != null){
+                        var score = Instantiate(floatingScore);
+                        score.transform.SetParent(this.gameObject.transform.parent);
+                        score.gameObject.transform.position = topHead.position;
+                        score.GetComponent<FloatingScore>().SetInstance(totalStrands,newColor,topHead);
+                    }
+                }
+                cutTimer = cutCooldown;
+            }
+        }
+    }
+}
+                      </code>
+                    </pre>
                   </div>
                   <div class="tab-pane fade" id="EndMenu" role="tabpanel" aria-labelledby="v-pills-EndMenu-tab" tabindex="3">
-                      <pre class="rounded bg-success bg-dark text-white">
+                    <pre class="rounded bg-dark">
+                      <code class="language-csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
-      using System.Collections;
-      using System.Collections.Generic;
-      using UnityEngine;
-      using UnityEngine.UI;
-      using UnityEngine.SceneManagement;
-      using TMPro;
+public class EndMenu : MonoBehaviour
+{
+    GameManager manager;
+    private SoundManager sm;
+    public List<float> PlayerScores = new List<float>();
+    public List<Color> AvailableColors = new List<Color>();
+    public List<Material> AvailableMaterials = new List<Material>();
+    public int biggestScore;
+    public int strongestPlayer;
+    public float fillSpeed = 10.0f;
 
-      public class EndMenu : MonoBehaviour
-      {
-          GameManager manager;
-          private SoundManager sm;
-          public List<float> PlayerScores = new List<float>();
-          public List<Color> AvailableColors = new List<Color>();
-          public List<Material> AvailableMaterials = new List<Material>();
-          public int biggestScore;
-          public int strongestPlayer;
-          public float fillSpeed = 10.0f;
+    int state = -1;
 
-          int state = -1;
+    void Start(){
+        GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
+        if(soundManagerObj != null)
+            sm = soundManagerObj.GetComponent<SoundManager>();
 
-          void Start(){
-              GameObject soundManagerObj = GameObject.FindGameObjectWithTag("SoundManager");
-              if(soundManagerObj != null)
-                  sm = soundManagerObj.GetComponent<SoundManager>();
+        if(sm != null)
+            sm.PlayAudio("MainMenuMusic");
 
-              if(sm != null)
-                  sm.PlayAudio("MainMenuMusic");
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        for(int idx = 0; idx < manager.Players.Count; idx++)
+        {
+            manager.Players[idx].gameObject.SetActive(false);
+            this.transform.GetChild(3).GetChild(idx).gameObject.SetActive(true);
+            this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
+            var scoreInt = (int)PlayerScores[idx];
+            this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
+        }
 
-              manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-              for(int idx = 0; idx < manager.Players.Count; idx++)
-              {
-                  manager.Players[idx].gameObject.SetActive(false);
-                  this.transform.GetChild(3).GetChild(idx).gameObject.SetActive(true);
-                  this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
-                  var scoreInt = (int)PlayerScores[idx];
-                  this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
-              }
+        List<int> ScoresAmount = new List<int>();
+        for(int u = 0; u < manager.PlayerScores.Count; u++)
+        {
+            ScoresAmount.Add(manager.PlayerScores[u]);
+        }
+        ScoresAmount.Sort();
+        biggestScore = ScoresAmount[ScoresAmount.Count-1];
+    }
 
-              List<int> ScoresAmount = new List<int>();
-              for(int u = 0; u < manager.PlayerScores.Count; u++)
-              {
-                  ScoresAmount.Add(manager.PlayerScores[u]);
-              }
-              ScoresAmount.Sort();
-              biggestScore = ScoresAmount[ScoresAmount.Count-1];
-          }
+    void FixedUpdate()
+    {
+        if (state == 0)
+        {
+            for(int idx = 0; idx < manager.Players.Count; idx++)
+            {
+                this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
+                if(PlayerScores[idx] < manager.PlayerScores[idx])
+                {
+                    if (PlayerScores[idx] + Time.deltaTime * fillSpeed <= manager.PlayerScores[idx])
+                    {
+                        PlayerScores[idx] += Time.deltaTime * fillSpeed;
+                    }
+                    else
+                    {
+                        PlayerScores[idx] = manager.PlayerScores[idx];
+                    }
 
-          void FixedUpdate()
-          {
-              if (state == 0)
-              {
-                  for(int idx = 0; idx < manager.Players.Count; idx++)
-                  {
-                      this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().color = manager.PlayerColors[idx];
-                      if(PlayerScores[idx] < manager.PlayerScores[idx])
-                      {
-                          if (PlayerScores[idx] + Time.deltaTime * fillSpeed <= manager.PlayerScores[idx])
-                          {
-                              PlayerScores[idx] += Time.deltaTime * fillSpeed;
-                          }
-                          else
-                          {
-                              PlayerScores[idx] = manager.PlayerScores[idx];
-                          }
+                }
+                var scoreInt = (int)PlayerScores[idx];
+                this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
+                var fillAmounts = scoreInt/1000.0f;
+                this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().fillAmount = fillAmounts;
+                if(scoreInt >= biggestScore)
+                {
+                    strongestPlayer = idx;
+                    state = 1;
+                }
+            }
+        }
+        else if (state == 1)
+        {
+            this.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
+            int winner = strongestPlayer + 1;
+            this.transform.GetChild(3).GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = winner.ToString();
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
 
-                      }
-                      var scoreInt = (int)PlayerScores[idx];
-                      this.transform.GetChild(3).GetChild(idx).GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreInt.ToString() + " ft";
-                      var fillAmounts = scoreInt/1000.0f;
-                      this.transform.GetChild(3).GetChild(idx).gameObject.GetComponent<Image>().fillAmount = fillAmounts;
-                      if(scoreInt >= biggestScore)
-                      {
-                          strongestPlayer = idx;
-                          state = 1;
-                      }
-                  }
-              }
-              else if (state == 1)
-              {
-                  this.transform.GetChild(3).GetChild(4).gameObject.SetActive(true);
-                  int winner = strongestPlayer + 1;
-                  this.transform.GetChild(3).GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = winner.ToString();
-                  this.transform.GetChild(0).gameObject.SetActive(true);
-                  this.transform.GetChild(1).gameObject.SetActive(true);
-              }
-          }
+    public void onMenuLoaded()
+    {
+        state = 0;
+    }
 
-          public void onMenuLoaded()
-          {
-              state = 0;
-          }
+    public void OnMainMenu()
+    {
+        GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        for(int idx = 0; idx < manager.Players.Count; idx++)
+        {
+            Destroy(manager.Players[idx].gameObject);
+        }
 
-          public void OnMainMenu()
-          {
-              GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-              for(int idx = 0; idx < manager.Players.Count; idx++)
-              {
-                  Destroy(manager.Players[idx].gameObject);
-              }
+        int numPlayers = manager.Players.Count;
 
-              int numPlayers = manager.Players.Count;
+        for(int idx = 0; idx < numPlayers; idx++)
+        {
+            manager.Players.RemoveAt(0);
+        }
 
-              for(int idx = 0; idx < numPlayers; idx++)
-              {
-                  manager.Players.RemoveAt(0);
-              }
+        manager.AvailableColors = new List<Color>();
+        manager.PlayerColors = new List<Color>();
+        manager.AvailableMaterials = new List<Material>();
+        manager.PlayerMaterials = new List<Material>();
 
-              manager.AvailableColors = new List<Color>();
-              manager.PlayerColors = new List<Color>();
-              manager.AvailableMaterials = new List<Material>();
-              manager.PlayerMaterials = new List<Material>();
+        for(int idx = 0; idx < AvailableColors.Count; idx++)
+        {
+            manager.AvailableColors.Add(AvailableColors[idx]);
+        }
 
-              for(int idx = 0; idx < AvailableColors.Count; idx++)
-              {
-                  manager.AvailableColors.Add(AvailableColors[idx]);
-              }
+        for(int idx = 0; idx < AvailableMaterials.Count; idx++)
+        {
+            manager.AvailableMaterials.Add(AvailableMaterials[idx]);
+        }
 
-              for(int idx = 0; idx < AvailableMaterials.Count; idx++)
-              {
-                  manager.AvailableMaterials.Add(AvailableMaterials[idx]);
-              }
+        for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
+        {
+            manager.PlayerScores[idx] = 0;
+        }
 
-              for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
-              {
-                  manager.PlayerScores[idx] = 0;
-              }
+        manager.level = 0;
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
 
-              manager.level = 0;
-              SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-          }
+    public void OnPushedRestart()
+    {
+        GetComponent<Animation>().Play("EndMenuRestart");
+    }
 
-          public void OnPushedRestart()
-          {
-              GetComponent<Animation>().Play("EndMenuRestart");
-          }
+    public void OnRestart()
+    {
+        GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-          public void OnRestart()
-          {
-              GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
+        {
+            manager.PlayerScores[idx] = 0;
+        }
 
-              for(int idx = 0; idx < manager.PlayerScores.Count; idx++)
-              {
-                  manager.PlayerScores[idx] = 0;
-              }
+        for(int idx = 0; idx < manager.Players.Count; idx++)
+        {
+            manager.Players[idx].GetComponentInChildren<HairPhysics>().enableHairGrowth = false;
+            manager.Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
+            manager.Players[idx].GetComponentInChildren<TopDownController>().TotalStrandCut = 0;
+        }
 
-              for(int idx = 0; idx < manager.Players.Count; idx++)
-              {
-                  manager.Players[idx].GetComponentInChildren<HairPhysics>().enableHairGrowth = false;
-                  manager.Players[idx].GetComponentInChildren<HairPhysics>().TrimHair(0);
-                  manager.Players[idx].GetComponentInChildren<TopDownController>().TotalStrandCut = 0;
-              }
-
-              manager.timerLevel = manager.choiceTimerLevel;
-              manager.level = 0;
-              SceneManager.LoadScene("Map1", LoadSceneMode.Single);
-          }
-      }
-                      </pre>
+        manager.timerLevel = manager.choiceTimerLevel;
+        manager.level = 0;
+        SceneManager.LoadScene("Map1", LoadSceneMode.Single);
+    }
+}
+                      </code>
+                    </pre>
                   </div>
                 </div>
               </div>
             </div>
           </div> <!-- End of the Code row -->
-
-        </div> <!-- End of the Body -->
-      </div> <!-- End Portfolio Details -->
+        </div>
+        </div>
+      </div> <!-- End of Container -->
+    </div> <!-- End Portfolio-details -->
 
   </main><!-- End #main -->
 
@@ -643,6 +650,8 @@
   <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js”></script>
   <script src=”https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js”></script>
   <script src=”https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js”></script>
+  <script src="assets/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
